@@ -38,7 +38,7 @@ function App() {
             key={i}
             title={expense.title}
             amount={expense.amount}
-            date={expense.date.toDateString()}
+            date={expense.date}
           />
         );
       })}
