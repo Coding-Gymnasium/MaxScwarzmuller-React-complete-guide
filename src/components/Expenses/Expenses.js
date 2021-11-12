@@ -19,16 +19,14 @@ export const Expenses = props => {
         defaultYear={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
-      {list.map((expense, i) => {
-        return (
-          <ExpenseItem
-            key={i}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        );
-      })}
+      {list.map(expense => (
+        <ExpenseItem
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        />
+      ))}
     </Card>
   );
 };
