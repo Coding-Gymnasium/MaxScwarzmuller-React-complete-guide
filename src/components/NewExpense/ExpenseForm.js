@@ -5,6 +5,7 @@ const ExpenseForm = props => {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
+  const [hidden, setHidden] = useState(true);
 
   const titleChangeHandler = event => {
     setTitle(event.target.value);
@@ -33,10 +34,12 @@ const ExpenseForm = props => {
     setDate('');
   };
 
+  const formChangeHandler = () => setHidden(!hidden);
+
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
-        <div className="new-expense__control">
+        <div className="new-expense__control" hidden={hidden}>
           <label>Title</label>
           <input
             type="text"
@@ -44,7 +47,7 @@ const ExpenseForm = props => {
             onChange={titleChangeHandler}
           />
         </div>
-        <div className="new-expense__control">
+        <div className="new-expense__control" hidden={hidden}>
           <label>Amount</label>
           <input
             type="number"
@@ -54,7 +57,7 @@ const ExpenseForm = props => {
             onChange={amountChangeHandler}
           />
         </div>
-        <div className="new-expense__control">
+        <div className="new-expense__control" hidden={hidden}>
           <label>Date</label>
           <input
             type="date"
@@ -65,8 +68,20 @@ const ExpenseForm = props => {
           />
         </div>
       </div>
+
       <div className="new-expense_actions">
-        <button type="submit">Add Expense</button>
+        <button hidden={hidden} onClick={formChangeHandler}>
+          Cancel
+        </button>
+        <button type="submit" hidden={hidden}>
+          Submit Expense
+        </button>
+      </div>
+
+      <div className="new-expense_actions">
+        <button hidden={!hidden} onClick={formChangeHandler}>
+          Add New Expense
+        </button>
       </div>
     </form>
   );
