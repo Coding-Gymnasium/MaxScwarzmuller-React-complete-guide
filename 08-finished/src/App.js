@@ -16,10 +16,12 @@ function App() {
   };
 
   return (
-    <div>
+    <>
+      {/* <> // shortcut for <React.Fragment> if full version used needs to be
+imported in 'import React, {Fragement} from 'react' */}
       <AddUser onAddUser={addUserHandler} />
       <UsersList users={usersList} />
-    </div>
+    </>
   );
 }
 
